@@ -11,7 +11,7 @@ using System.Text;
 public class SocketServer : MonoBehaviour {
 
 	//private string host = "localhost";
-	private string host = "192.168.11.6";
+	private string host = "192.168.11.3";
 	private int port = 22222;
 
 	// State object for reading client data asynchronously
@@ -146,8 +146,9 @@ public class SocketServer : MonoBehaviour {
 		char command = content[0];
 		switch (command) {
 		case 's':
-			GameManager.Instance.GameStart();
-			message = "start";
+			int stageLevel = (int)(content[1] - '0');
+			GameManager.Instance.GameStart(stageLevel);
+			message = "start level" + stageLevel;
 			break;
 		case 'r':
 			GameManager.Instance.GameReset();

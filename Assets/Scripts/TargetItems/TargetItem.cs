@@ -46,4 +46,8 @@ public class TargetItem : MonoBehaviour {
 	public virtual int GetItemId() {
 		return 0;
 	}
+
+	public virtual int GetScore() {
+		return 0;
+	}
 }

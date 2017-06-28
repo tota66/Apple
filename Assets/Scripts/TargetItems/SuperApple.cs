@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Apple : TargetItem {
+public class SuperApple : TargetItem {
 
 	// Use this for initialization
 	void Awake () {
@@ -24,10 +24,10 @@ public class Apple : TargetItem {
 	}
 
 	public override int GetItemId() {
-		return 1;
+		return 2;
 	}
 
 	public override int GetScore() {
-		return 1;
+		return 5;
 	}
 }

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	private int prevScore = 0;
 	private float time = 0.0f;
 	private float limitTime = 10.0f;
+	private int stageLevel = 1;
 
 	private int[] obs;
 	private float minX = -7.0f;
@@ -130,8 +131,10 @@ public class GameManager : MonoBehaviour {
 		return stageWidth;
 	}
 
-	public void GameStart() {
+	public void GameStart(int level) {
 		isGameStarted = true;
+		stageLevel = level;
+		itemGenerator.start(level);
 	}
 
 	public void GameReset() {
@@ -142,6 +145,7 @@ public class GameManager : MonoBehaviour {
 		score = 0;
 		prevScore = 0;
 		targetItemList.Clear();
+		itemGenerator.reset();
 	}
 
 	public string GetResponseMessage(bool isOnlyObs) {
@@ -180,7 +184,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (!isGameStarted) {
 			if (Input.GetKey(KeyCode.S)) {
-				GameStart();
+				GameStart(stageLevel);
 			}
 			player.Reset();
 			return;

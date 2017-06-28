@@ -52,9 +52,9 @@ public class Player : MonoBehaviour {
 		if (other.gameObject.tag != "TargetItem") {
 			return;
 		}
-		GameManager.Instance.AddScore(1);
-
 		TargetItem item = other.GetComponent<TargetItem>();
+		GameManager.Instance.AddScore(item.GetScore());
+
 		GameManager.Instance.RemoveTargetItem(item);
 		Destroy(other.gameObject);
 	}
